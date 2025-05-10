@@ -28,13 +28,20 @@ export function CardButton() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <button className="relative group p-1" type="button">
+        <button 
+          className="relative group p-1" 
+          type="button"
+          suppressHydrationWarning
+        >
           <ShoppingBag strokeWidth={1} />
-          <span className="absolute size-4 rounded-xl flex justify-center items-center bg-foreground right-0 top-1 group-hover:size-8 transition-all duration-300">
-            <span className="text-xs group-hover:text-lg text-background transition-all duration-300">
+          <div className="absolute size-4 rounded-xl flex justify-center items-center bg-foreground right-0 top-1 group-hover:size-8 transition-all duration-300">
+            <span 
+              className="text-xs group-hover:text-lg text-background transition-all duration-300"
+              suppressHydrationWarning
+            >
               {cart.length}
             </span>
-          </span>
+          </div>
         </button>
       </SheetTrigger>
       <SheetContent className="flex flex-col">
