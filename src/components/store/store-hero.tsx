@@ -11,9 +11,9 @@ export default function HeroSection() {
   const [search, setSearch] = useState("");
 
   return (
-    <section className="relative w-full bg-black text-white">
+    <section className="relative w-full min-h-[85vh] bg-black text-white">
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10" />
         <video 
           autoPlay 
           muted 
@@ -25,29 +25,29 @@ export default function HeroSection() {
         </video>
       </div>
 
-      <div className="relative z-20 max-w-screen-xl mx-auto px-4 py-20 sm:py-32">
-        <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium mb-6">
-            Your One-Stop Destination for Premium Skincare
-          </h1>
-          <p className="text-lg sm:text-xl text-white/70 mb-8">
-            Discover our curated collection of luxury skincare products
-          </p>
+      <div className="relative z-20 flex items-center justify-center h-full max-w-screen-xl mx-auto px-4">
+        <div className="max-w-3xl w-full mx-auto text-center space-y-8">
+          <div className="space-y-4">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight">
+              Discover Your Perfect
+              <span className="block mt-2">Skincare Solution</span>
+            </h1>
+          </div>
 
-          <div className="relative max-w-xl mx-auto">
-            <Command className="relative rounded-lg overflow-hidden">
-              <div className="flex items-center border-b px-3" cmdk-input-wrapper="">
-                <Search className="size-4 mr-2 shrink-0 opacity-50" />
+          <div className="relative max-w-2xl mx-auto">
+            <Command className="relative overflow-hidden rounded-none border-0">
+              <div className="flex items-center bg-white/95" cmdk-input-wrapper="">
+                <Search className="size-5 ml-4 text-neutral-400" />
                 <input
-                  className="flex h-14 w-full rounded-md bg-white px-3 py-2 text-sm outline-none placeholder:text-neutral-500 text-black"
-                  placeholder="Search products, categories, or ingredients..."
+                  className="flex h-16 w-full bg-transparent px-4 text-base outline-none placeholder:text-neutral-500 text-black"
+                  placeholder="Search for products, categories, or ingredients..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   onFocus={() => setOpen(true)}
                 />
               </div>
               {open && search && (
-                <div className="absolute top-full left-0 right-0 bg-white mt-1 rounded-lg overflow-hidden shadow-lg border">
+                <div className="absolute top-full left-0 right-0 bg-white mt-1 overflow-hidden shadow-lg">
                   <Command.List className="max-h-[300px] overflow-y-auto p-2">
                     {products
                       .filter(product => 
@@ -58,12 +58,12 @@ export default function HeroSection() {
                         <Link 
                           key={product.id} 
                           href={`/products/${product.route}`}
-                          className="flex items-center gap-3 px-4 py-2 text-sm text-black hover:bg-neutral-100 rounded-md"
+                          className="flex items-center gap-4 px-4 py-3 text-black hover:bg-neutral-50 transition-colors"
                         >
-                          <div className="size-10 bg-neutral-100 rounded-md shrink-0" />
+                          <div className="size-12 bg-neutral-100 shrink-0" />
                           <div>
                             <p className="font-medium">{product.name}</p>
-                            <p className="text-xs text-neutral-500">{product.category}</p>
+                            <p className="text-sm text-neutral-500">{product.category}</p>
                           </div>
                         </Link>
                       ))}
@@ -79,21 +79,6 @@ export default function HeroSection() {
                 </div>
               )}
             </Command>
-          </div>
-
-          <div className="mt-8 flex items-center justify-center gap-8 text-sm text-white/60">
-            <div className="flex items-center gap-2">
-              <div className="size-2 rounded-full bg-green-500" />
-              Free Shipping
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="size-2 rounded-full bg-blue-500" />
-              100% Authentic
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="size-2 rounded-full bg-purple-500" />
-              24/7 Support
-            </div>
           </div>
         </div>
       </div>
