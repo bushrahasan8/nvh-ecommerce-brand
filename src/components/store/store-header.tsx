@@ -12,12 +12,18 @@ export default function Header({ products }: { products?: boolean }) {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
   }, []);
 
   return (
-    <header className={`fixed top-4 left-4 right-4 z-50 transition-all duration-300 border bg-background ${scrolled ? 'shadow-lg' : ''}`}>
+    <header 
+      className={`fixed top-4 left-4 right-4 z-50 transition-all duration-300 border bg-background ${scrolled ? 'shadow-lg' : ''}`}
+      suppressHydrationWarning
+    >
       <div className="max-w-screen-xl mx-auto">
         <div className={`flex justify-between w-full items-center py-4 px-6 ${products && "max-w-screen-lg mx-auto"}`}>
           <Link href="/" className="flex items-center gap-2">
