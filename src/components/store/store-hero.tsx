@@ -12,44 +12,44 @@ export default function HeroSection() {
   const [search, setSearch] = useState("");
 
   return (
-    <section className="relative w-full h-[90vh] overflow-hidden">
+    <section className="relative mx-4 mt-4 h-[85vh] overflow-hidden rounded-lg border bg-background">
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1570554886111-e80fcca6a029?q=80&w=2940&auto=format&fit=crop"
-          alt="Luxury Skincare"
+          src="https://images.unsplash.com/photo-1612817288484-6f916006741a?q=80&w=2940&auto=format&fit=crop"
+          alt="Luxury Skincare Collection"
           fill
           priority
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
       </div>
 
-      <div className="relative h-full flex items-center justify-center">
-        <div className="max-w-[95%] w-[900px] mx-auto text-center space-y-8 px-4">
+      <div className="relative h-full flex items-center">
+        <div className="w-full max-w-2xl px-8 sm:px-12 lg:px-16">
           <div className="space-y-6">
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-light tracking-tight text-white">
-              Your Skincare
-              <span className="block mt-3">Your Ritual</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-white">
+              Discover Your Perfect
+              <span className="block mt-3">Skincare Ritual</span>
             </h1>
-            <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto">
-              Discover our curated collection of premium skincare essentials
+            <p className="text-lg text-white/90 max-w-lg">
+              Explore our curated collection of premium skincare essentials
             </p>
           </div>
 
-          <div className="relative max-w-2xl mx-auto">
-            <Command className="relative overflow-hidden border-0">
-              <div className="flex items-center bg-white/95 shadow-xl" cmdk-input-wrapper="">
-                <Search className="size-5 ml-6 text-neutral-400" />
+          <div className="mt-8">
+            <Command className="relative overflow-hidden rounded-md">
+              <div className="flex items-center bg-white/95" cmdk-input-wrapper="">
+                <Search className="ml-4 size-5 text-neutral-400" />
                 <input
-                  className="flex h-16 w-full bg-transparent px-4 text-base outline-none placeholder:text-neutral-500 text-black"
-                  placeholder="Search products, collections, or ingredients..."
+                  className="h-14 w-full bg-transparent px-4 text-base outline-none placeholder:text-neutral-400 text-black"
+                  placeholder="Search for products..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   onFocus={() => setOpen(true)}
                 />
               </div>
               {open && search && (
-                <div className="absolute top-full left-0 right-0 bg-white mt-2 shadow-xl">
+                <div className="absolute left-0 right-0 top-full border-t bg-white">
                   <Command.List className="max-h-[300px] overflow-y-auto">
                     {products
                       .filter(product => 
@@ -60,9 +60,9 @@ export default function HeroSection() {
                         <Link 
                           key={product.id} 
                           href={`/products/${product.route}`}
-                          className="flex items-center gap-4 px-6 py-4 text-black hover:bg-neutral-50 transition-colors"
+                          className="flex items-center gap-4 border-b px-4 py-3 text-black hover:bg-neutral-50 transition-colors"
                         >
-                          <div className="size-16 bg-neutral-100 shrink-0" />
+                          <div className="size-14 bg-neutral-100 shrink-0" />
                           <div className="text-left">
                             <p className="font-medium">{product.name}</p>
                             <p className="text-sm text-neutral-500">{product.category}</p>
@@ -73,7 +73,7 @@ export default function HeroSection() {
                       product.name.toLowerCase().includes(search.toLowerCase()) ||
                       product.category.toLowerCase().includes(search.toLowerCase())
                     ).length === 0 && (
-                      <div className="px-6 py-4 text-sm text-neutral-500">
+                      <div className="px-4 py-3 text-sm text-neutral-500">
                         No results found.
                       </div>
                     )}
