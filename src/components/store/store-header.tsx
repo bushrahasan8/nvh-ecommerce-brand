@@ -17,49 +17,43 @@ export default function Header({ products }: { products?: boolean }) {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${scrolled ? 'bg-background/95 backdrop-blur-md' : 'bg-background'}`}>
-      <div className="max-w-screen-xl mx-auto px-4">
-        <div className="flex flex-col">
-          <h1 className={`text-center text-2xl sm:text-3xl font-bold py-4 transition-all duration-300 ${scrolled ? 'hidden' : ''}`}>
-            NZAR Velvet Hour
-          </h1>
-          
-          <div className={`flex justify-between w-full items-center py-4 ${products && "max-w-screen-lg mx-auto"}`}>
-            <Link href="/" className="flex items-center gap-2">
-              <h2 className="font-medium text-xl hover:opacity-80 transition-opacity">NVH®</h2>
-            </Link>
+    <header className={`fixed top-4 left-4 right-4 z-50 transition-all duration-300 border bg-background`}>
+      <div className="max-w-screen-xl mx-auto">
+        <div className={`flex justify-between w-full items-center py-4 px-6 ${products && "max-w-screen-lg mx-auto"}`}>
+          <Link href="/" className="flex items-center gap-2">
+            <h2 className="font-medium text-xl hover:opacity-80 transition-opacity">NVH®</h2>
+          </Link>
 
+          {!products && (
+            <nav className="hidden md:block">
+              <ul className="flex gap-8">
+                <li>
+                  <a href="#our-collection" className="nav-link">Our Collection</a>
+                </li>
+                <li>
+                  <a href="#client-favorites" className="nav-link">Client Favorites</a>
+                </li>
+                <li>
+                  <a href="#why-nvh" className="nav-link">Why NVH®</a>
+                </li>
+                <li>
+                  <a href="#about-the-brand" className="nav-link">About The Brand</a>
+                </li>
+              </ul>
+            </nav>
+          )}
+
+          <div className="flex items-center gap-4">
+            <CardButton />
             {!products && (
-              <nav className="hidden md:block">
-                <ul className="flex gap-8">
-                  <li>
-                    <a href="#our-collection" className="nav-link">Our Collection</a>
-                  </li>
-                  <li>
-                    <a href="#client-favorites" className="nav-link">Client Favorites</a>
-                  </li>
-                  <li>
-                    <a href="#why-nvh" className="nav-link">Why NVH®</a>
-                  </li>
-                  <li>
-                    <a href="#about-the-brand" className="nav-link">About The Brand</a>
-                  </li>
-                </ul>
-              </nav>
+              <button
+                className="p-2 hover:bg-accent transition-colors md:hidden"
+                onClick={() => setOpenMenu(!openMenu)}
+                aria-label="Toggle menu"
+              >
+                <Menu strokeWidth={1.5} className="size-6" />
+              </button>
             )}
-
-            <div className="flex items-center gap-4">
-              <CardButton />
-              {!products && (
-                <button
-                  className="p-2 hover:bg-accent rounded-none transition-colors md:hidden"
-                  onClick={() => setOpenMenu(!openMenu)}
-                  aria-label="Toggle menu"
-                >
-                  <Menu strokeWidth={1.5} className="size-6" />
-                </button>
-              )}
-            </div>
           </div>
         </div>
       </div>

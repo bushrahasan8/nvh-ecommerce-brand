@@ -72,7 +72,7 @@ body {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground pt-28;
+    @apply bg-background text-foreground pt-24;
   }
   .animate-scroll-card {
     @apply h-40 min-w-[268px] grayscale bg-slate-700 opacity-40 sm:opacity-20 sm:group-hover:opacity-60 transition-all duration-500 group-hover:scale-105;
